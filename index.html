@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <div class="form">
-      <label for="guessField">请猜数: </label>
-      <input type="text" id="guessField" class="guessField">
-      <input type="submit" value="确定" class="guessSubmit">
-    </div>
 
-    
-      <p class="resp"></p>
-    
-    <script src="scripts/main.js" async></script>
-      
+<head>
+  <meta charset="utf-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  
+</head>
+<p class="word" id = '1'>222222</p>
+<p class="word"id = '2'>33333</p>
 
+<body>
+  <form>
+    <input type="text" id="futures">
+    <input type="text" id="alarm">
+    <button type = "button"id="update">Update</button>
+  </form>
+  <br>
+  <table border="1">
+    <tr>
+      <th>futures</th>
+      <th>alarm</th>
+      <th>random</th>
+    </tr>
+      <tr>
+      <td id = "value_future">qqq</td>
+      <td id = "value_alarm">tt</td>
+      <td id = "value_random">eee</td>
+    </tr>
     
-  </body>
+  </table>
+
+  <script src="scripts/main.js" async></script>
+
+</body>
+
 </html>
