@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="utf-8">
   <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
+
 <body>
   <label>Types:</label>
   <input type="text" id="types">
-  
+
   <label>Alarm:</label>
   <input type="text" id="alarm">
   <button id='updates'>Update</button>
-<br>
-<br>
-  <table border="2">
+  <br>
+  <br>
+  <table border="1">
     <th>Types</th>
     <th>Current</th>
-    <!-- <th>alarm</th> -->
-    <tr id ='tr'>
-      <!-- <td id='tr_types'>2222</td>
-      <td id='tr_current'>1111</td>
-      <td id='tr_alarm'>3333</td> -->
-  </tr> 
-</table>
+    <th>Alarm</th>
+    <tr id="tr_alarm">
+    </tr>
+  </table>
+  <script>
+    $(document).ready(function () {
+      setInterval(refresh, 1000)
 
-<script>
+      function refresh() {
 
-  $(document).ready(function () {
-    var tr = $("#tr")
-    $.get("/updates", function (data, status) {
-      for(var current in data){
-        console.log(current)
-        console.log(data[current])
-        // $("#tr_types").text(current)
-        // $("#tr_current").text(data[current])
-        tr.after("<tr><td>"+current+"<td>"+data[current])
+        var tr_alarm = $("#tr_alarm")
+        var tr_class = $(".tr")
+        $.get("/updates", function (data, status) {
+          if(tr_class.length ==0){
+            console.log('00000000000')
+            for (var current in data) {
+            tr_alarm.after('<tr class= "tr"><td>' + current + '</td>' + "<td>" + data[current] + '</td></tr>')
+            }
+          }
+          else{
+            tr_class.remove()
+            for (var current in data) {
+            tr_alarm.after('<tr class= "tr"><td>' + current + '</td>' + "<td>" + data[current] + '</td></tr>')
+
+          }
+          
+          }
+        });
       }
     });
 
-
-
-  $("#updates").click(function () {
-    
-  });
-
-});
-
-</script>
+  </script>
 
 </body>
 
